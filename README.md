@@ -1,2 +1,4 @@
 # bootstrap-blog
-Default Bootstrap style for htmly blogging theme
+Bootstrap blog is HTMLY blogging theme which ported from Bootstrap styled template created by startbootstrap.com. Originally can be accessed here :
+
+https://startbootstrap.com/template-overviews/blog-home

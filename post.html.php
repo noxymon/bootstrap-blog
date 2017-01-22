@@ -1,12 +1,19 @@
-<?php if (!empty($p->image)) { ?>
-    <div class="featured featured-image">
-        <a href="<?php echo $p->url ?>"><img itemprop="image" src="<?php echo $p->image; ?>" alt="<?php echo $p->title ?>"/></a>
-    </div>
+<?php if (!empty($p->link)) { ?>
+    <h1 class="title" itemprop="headline"><a target="_blank" href="<?php echo $p->link ?>"><?php echo $p->title;?> <i class="fa fa-external-link"></i></a></h1>
+<?php } else { ?>
+    <h1 class="title" itemprop="headline"><?php echo $p->title;?></h1>
 <?php } ?>
+    
+<p class="lead">
+    by <a href="<?php echo $p->authorUrl;?>"><?php echo $p->author;?></a>
+</p>
+<p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo date('d F Y', $p->date) ?> <?php if (login()) { echo editButton($p); } ?></p>
+<hr>
 <?php if (!empty($p->video)) { ?>
     <div class="featured featured-video embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $p->video; ?>" frameborder="0" allowfullscreen></iframe>
     </div>
+    <br/>
 <?php } ?>
 <?php if (!empty($p->audio)) { ?>
     <div class="featured featured-audio embed-responsive embed-responsive-16by9">
@@ -18,21 +25,9 @@
         <blockquote class="quote"><i class="fa fa-quote-left"></i> <?php echo $p->quote ?> <i class="fa fa-quote-right"></i></blockquote>
     </div>
 <?php } ?>
-<?php if (!empty($p->link)) { ?>
-    <h1 class="title" itemprop="headline"><a target="_blank" href="<?php echo $p->link ?>"><?php echo $p->title;?> <i class="fa fa-external-link"></i></a></h1>
-<?php } else { ?>
-    <h1 class="title" itemprop="headline"><?php echo $p->title;?></h1>
-<?php } ?>
-<p class="lead">
-    by <a href="<?php echo $p->authorUrl;?>"><?php echo $p->author;?></a>
-</p>
-<p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo date('d F Y', $p->date) ?> <?php if (login()) { echo editButton($p); } ?></p>
-<hr>
-<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-<hr>
-<p>
+<div class="post-body">
     <?php echo $p->body; ?>
-</p>
+</div>
 <hr/>
 <div style="margin-top:30px;position:relative;">
     <span class="tags"><i class="glyphicon glyphicon-tags" style="margin-right: 5px;"></i>  This post tagged with : <?php echo $p->tag;?></span> 

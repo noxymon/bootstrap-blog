@@ -32,6 +32,18 @@ h2{
     font-size: 13pt;
 }
 
+img.featured{
+    max-width: 750px;
+}
+
+img.post-image{
+    max-width: 750px;
+}
+
+.post-body img{
+    max-width: 750px;
+}
+
 .konten{
     margin-top: -20px;
 }

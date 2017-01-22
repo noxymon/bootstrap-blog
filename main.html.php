@@ -9,9 +9,21 @@
     }
     $i++; ?>
 
+<?php if (!empty($p->link)) { ?>
+    <h2 class="title" itemprop="headline"><a target="_blank" href="<?php echo $p->link ?>"><?php echo $p->title;?> <i class="fa fa-external-link"></i></a></h2>
+<?php } else {?>
+    <h2 class="title" itemprop="headline"><a href="<?php echo $p->url;?>"><?php echo $p->title;?></a></h2>
+<?php } ?>
+
+<p class="lead">
+    by <a href="<?php echo $p->authorUrl;?>"><?php echo $p->author;?></a>
+</p>
+
+<p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo date('d F Y', $p->date) ?></p>
+
 <?php if (!empty($p->image)) { ?>
     <div class="featured featured-image">
-        <a href="<?php echo $p->url ?>"><img  itemprop="image" src="<?php echo $p->image; ?>" alt="<?php echo $p->title ?>"/></a>
+        <a href="<?php echo $p->url ?>"><img class="featured"  itemprop="image" src="<?php echo $p->image; ?>" alt="<?php echo $p->title ?>"/></a>
     </div>
 <?php } ?>
 <?php if (!empty($p->video)) { ?>
@@ -30,19 +42,7 @@
     </div>
 <?php } ?>
 
-<?php if (!empty($p->link)) { ?>
-    <h2 class="title" itemprop="headline"><a target="_blank" href="<?php echo $p->link ?>"><?php echo $p->title;?> <i class="fa fa-external-link"></i></a></h2>
-<?php } else {?>
-    <h2 class="title" itemprop="headline"><a href="<?php echo $p->url;?>"><?php echo $p->title;?></a></h2>
-<?php } ?>
-
-<p class="lead">
-    by <a href="<?php echo $p->authorUrl;?>"><?php echo $p->author;?></a>
-</p>
-
-<p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo date('d F Y', $p->date) ?></p>
 <p>
-    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
     <?php echo get_teaser($p->body, $p->url) ?>
 </p>
 <?php if (config('teaser.type') === 'trimmed'):?>
@@ -61,7 +61,9 @@
 
 <?php endforeach; ?>
 <?php if (!empty($pagination['prev']) || !empty($pagination['next'])): ?>
-    <div class="pagination"><?php echo $pagination['html'];?></div>
+    <div class="text-center">
+        <div class="pagination"><?php echo $pagination['html'];?></div>
+    </div>
 <?php endif; ?>
 <?php if (disqus_count()): ?>
     <?php echo disqus_count() ?>

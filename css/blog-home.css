@@ -33,15 +33,15 @@ h2{
 }
 
 img.featured{
-    max-width: 750px;
+    max-width: 100%;
 }
 
 img.post-image{
-    max-width: 750px;
+    max-width: 100%;
 }
 
 .post-body img{
-    max-width: 750px;
+    max-width: 100%;
 }
 
 .konten{
